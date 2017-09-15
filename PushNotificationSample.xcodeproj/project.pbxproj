@@ -22,6 +22,7 @@
 		99EADF3F1F6A9B7C007CD528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99EADF421F6A9B7C007CD528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99EADF441F6A9B7C007CD528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99EADF4A1F6AA123007CD528 /* PushNotificationSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PushNotificationSample.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +55,7 @@
 		99EADF371F6A9B7C007CD528 /* PushNotificationSample */ = {
 			isa = PBXGroup;
 			children = (
+				99EADF4A1F6AA123007CD528 /* PushNotificationSample.entitlements */,
 				99EADF381F6A9B7C007CD528 /* AppDelegate.swift */,
 				99EADF3A1F6A9B7C007CD528 /* ViewController.swift */,
 				99EADF3C1F6A9B7C007CD528 /* Main.storyboard */,
@@ -98,6 +100,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 446V7WHT8W;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -261,6 +268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PushNotificationSample/PushNotificationSample.entitlements;
 				DEVELOPMENT_TEAM = 446V7WHT8W;
 				INFOPLIST_FILE = PushNotificationSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -275,6 +283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PushNotificationSample/PushNotificationSample.entitlements;
 				DEVELOPMENT_TEAM = 446V7WHT8W;
 				INFOPLIST_FILE = PushNotificationSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -304,6 +313,7 @@
 				99EADF491F6A9B7C007CD528 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
