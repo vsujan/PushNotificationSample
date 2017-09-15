@@ -22,7 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let mynotif = UNUserNotificationCenter.current()
       mynotif.requestAuthorization(options: [.alert, .sound, .badge]) {(granted, error) in
         guard granted else { return }
-        self.getNotificationSettings()
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+          print("Notification settings: \(settings)")
+          guard settings.authorizationStatus == .authorized else { return }
+          UIApplication.shared.registerForRemoteNotifications()
+        }
       }
     } else {
       // Fallback on earlier versions
@@ -54,8 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
     //sujan-note When the app is in foreground or background
     
-//    let aps = userInfo["aps"] as! [String: AnyObject]
-//    print(aps)
+    //    let aps = userInfo["aps"] as! [String: AnyObject]
+    //    print(aps)
     
     let text = fromLaunch ? "From did launch" : "From did receive"
     fromLaunch = false
@@ -70,21 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     })
     
     self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-
+    
   }
-  
-  func getNotificationSettings() {
-    if #available(iOS 10.0, *) {
-      UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-        print("Notification settings: \(settings)")
-        guard settings.authorizationStatus == .authorized else { return }
-        UIApplication.shared.registerForRemoteNotifications()
-      }
-    } else {
-      // Fallback on earlier versions
-    }
-  }
-
   
 }
-
